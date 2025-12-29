@@ -285,8 +285,8 @@ export default function OrdersManagement({ userRole }: OrdersManagementProps) {
                   Mark Ready
                 </button>
               )}
-              {/* WAITER can mark READY orders as SERVED */}
-              {order.status === "READY" && (
+              {/* Only WAITER/CASHIER can mark READY orders as SERVED */}
+              {order.status === "READY" && ["WAITER", "CASHIER"].includes(userRole || "") && (
                 <button
                   onClick={() => updateOrderStatus(order.id, "SERVED")}
                   className="px-3 py-1 bg-purple-600 text-white rounded text-xs hover:bg-purple-700"
@@ -294,14 +294,14 @@ export default function OrdersManagement({ userRole }: OrdersManagementProps) {
                   Mark Served
                 </button>
               )}
-              {/* Only ADMIN/MANAGER/CASHIER can complete (for billing) */}
-              {order.status === "SERVED" && ["ADMIN", "MANAGER", "CASHIER"].includes(userRole || "") && (
-                <button
-                  onClick={() => updateOrderStatus(order.id, "COMPLETED")}
-                  className="px-3 py-1 bg-gray-600 text-white rounded text-xs hover:bg-gray-700"
+              {/* WAITER/CASHIER can go to billing for SERVED orders */}
+              {order.status === "SERVED" && ["WAITER", "CASHIER"].includes(userRole || "") && (
+                <a
+                  href="/billing"
+                  className="px-3 py-1 bg-orange-600 text-white rounded text-xs hover:bg-orange-700 inline-block"
                 >
-                  Complete
-                </button>
+                  Go to Billing
+                </a>
               )}
             </div>
 

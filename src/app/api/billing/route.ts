@@ -15,15 +15,30 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
     }
 
+    // Get existing sale to preserve notes
+    const existingSale = await prisma.sale.findUnique({
+      where: { id: orderId }
+    })
+
+    if (!existingSale) {
+      return NextResponse.json({ error: "Order not found" }, { status: 404 })
+    }
+
+    // Build payment notes
+    const paymentNotes = `Received: ₹${receivedAmount.toFixed(2)}${change > 0 ? ` | Change: ₹${change.toFixed(2)}` : ""}`
+    const updatedNotes = existingSale.notes 
+      ? `${existingSale.notes}\n${paymentNotes}` 
+      : paymentNotes
+
     // Update the sale with payment information
     const sale = await prisma.sale.update({
       where: { id: orderId },
       data: {
         paymentMethod,
-        discount,
+        discount: discount || 0,
         total: finalTotal,
         status: "COMPLETED",
-        notes: sale => `${sale.notes || ""}\nReceived: ₹${receivedAmount}${change > 0 ? ` | Change: ₹${change}` : ""}`
+        notes: updatedNotes
       },
       include: {
         saleItems: {

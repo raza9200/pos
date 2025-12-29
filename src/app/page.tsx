@@ -1,13 +1,14 @@
 import { redirect } from "next/navigation"
 import { auth } from "@/auth"
-import POSScreen from "@/components/POSScreen"
+import HomePage from "@/components/HomePage"
 
 export default async function Home() {
   const session = await auth()
-
-  if (!session) {
-    redirect("/login")
+  
+  if (session?.user) {
+    // If user is logged in, redirect to POS
+    redirect("/pos")
   }
 
-  return <POSScreen />
+  return <HomePage />
 }

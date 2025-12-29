@@ -1,26 +1,78 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand Colors */
+  --primary: #2563eb;        /* Blue 600 - Primary actions */
+  --primary-dark: #1e40af;   /* Blue 700 - Hover states */
+  --primary-light: #3b82f6;  /* Blue 500 - Light accents */
+  
+  --secondary: #10b981;      /* Emerald 500 - Success/Sales */
+  --secondary-dark: #059669; /* Emerald 600 - Hover */
+  
+  --accent: #8b5cf6;         /* Violet 500 - Highlights */
+  --warning: #f59e0b;        /* Amber 500 - Warnings */
+  --danger: #ef4444;         /* Red 500 - Errors/Delete */
+  
+  /* Neutral Colors */
+  --background: #f9fafb;     /* Gray 50 - Page background */
+  --surface: #ffffff;        /* White - Card/surface background */
+  --foreground: #111827;     /* Gray 900 - Primary text */
+  --muted: #6b7280;          /* Gray 500 - Secondary text */
+  --border: #e5e7eb;         /* Gray 200 - Borders */
+  
+  /* Component Colors */
+  --nav-bg: #1f2937;         /* Gray 800 - Navigation */
+  --nav-text: #f9fafb;       /* Gray 50 - Nav text */
+  --sidebar-bg: #ffffff;     /* White - Sidebar */
+  
+  /* Status Colors */
+  --success: #10b981;        /* Green - Success states */
+  --info: #3b82f6;           /* Blue - Information */
+  --warning: #f59e0b;        /* Amber - Warning states */
+  --error: #ef4444;          /* Red - Error states */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --font-sans: system-ui, -apple-system, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #111827;
+    --surface: #1f2937;
+    --foreground: #f9fafb;
+    --muted: #9ca3af;
+    --border: #374151;
+    --nav-bg: #0f172a;
+    --sidebar-bg: #1f2937;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
 }

@@ -29,7 +29,7 @@ export default function LoginPage() {
       setError("Invalid email or password")
       setIsLoading(false)
     } else {
-      router.push("/pos")
+      router.push("/dashboard")
       router.refresh()
     }
   }
@@ -84,7 +84,7 @@ export default function LoginPage() {
                 type="email"
                 required
                 placeholder="you@example.com"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900"
               />
             </div>
 
@@ -98,7 +98,7 @@ export default function LoginPage() {
                 type="password"
                 required
                 placeholder="••••••••"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900"
               />
             </div>
 

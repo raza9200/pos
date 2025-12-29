@@ -6,8 +6,8 @@ export default async function Home() {
   const session = await auth()
   
   if (session?.user) {
-    // If user is logged in, redirect to POS
-    redirect("/pos")
+    // If user is logged in, redirect to Dashboard
+    redirect("/dashboard")
   }
 
   return <HomePage />

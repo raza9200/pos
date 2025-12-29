@@ -141,7 +141,7 @@ export default function ExpensesManagement() {
               onChange={(e) =>
                 setDateFilter({ ...dateFilter, startDate: e.target.value })
               }
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
             />
           </div>
           <div className="flex-1 min-w-[150px]">
@@ -154,7 +154,7 @@ export default function ExpensesManagement() {
               onChange={(e) =>
                 setDateFilter({ ...dateFilter, endDate: e.target.value })
               }
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
             />
           </div>
           <div className="flex-1 min-w-[150px]">
@@ -166,7 +166,7 @@ export default function ExpensesManagement() {
               onChange={(e) =>
                 setDateFilter({ ...dateFilter, category: e.target.value })
               }
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
             >
               <option value="">All Categories</option>
               {EXPENSE_CATEGORIES.map((cat) => (
@@ -292,7 +292,7 @@ export default function ExpensesManagement() {
                   onChange={(e) =>
                     setFormData({ ...formData, description: e.target.value })
                   }
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
                   placeholder="e.g., Office rent payment"
                 />
               </div>
@@ -309,7 +309,7 @@ export default function ExpensesManagement() {
                     onChange={(e) =>
                       setFormData({ ...formData, amount: e.target.value })
                     }
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
                     placeholder="0.00"
                   />
                 </div>
@@ -323,7 +323,7 @@ export default function ExpensesManagement() {
                     onChange={(e) =>
                       setFormData({ ...formData, category: e.target.value })
                     }
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
                   >
                     {EXPENSE_CATEGORIES.map((cat) => (
                       <option key={cat} value={cat}>
@@ -344,7 +344,7 @@ export default function ExpensesManagement() {
                   onChange={(e) =>
                     setFormData({ ...formData, expenseDate: e.target.value })
                   }
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
                 />
               </div>
               <div>
@@ -357,7 +357,7 @@ export default function ExpensesManagement() {
                     setFormData({ ...formData, notes: e.target.value })
                   }
                   rows={3}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
                   placeholder="Additional notes..."
                 />
               </div>

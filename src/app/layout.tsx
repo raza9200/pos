@@ -21,7 +21,7 @@ export default async function RootLayout({
         {session?.user && (
           <Navigation userRole={session.user.role} userName={session.user.name || "User"} />
         )}
-        <main className="min-h-screen bg-gray-50">
+        <main className={`min-h-screen bg-gray-50 ${session?.user ? "ml-64" : ""}`}>
           {children}
         </main>
       </body>

@@ -208,7 +208,7 @@ export default function POSScreen() {
               placeholder="Search products (name, SKU, barcode)..."
               value={searchTerm}
               onChange={(e) => handleSearch(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
             />
           </div>
 
@@ -331,7 +331,7 @@ export default function POSScreen() {
                   step="0.01"
                   value={discount}
                   onChange={(e) => setDiscount(parseFloat(e.target.value) || 0)}
-                  className="flex-1 px-2 py-1 border border-gray-300 rounded"
+                  className="flex-1 px-2 py-1 border border-gray-300 rounded text-gray-900"
                 />
               </div>
 
@@ -343,7 +343,7 @@ export default function POSScreen() {
                   step="0.01"
                   value={tax}
                   onChange={(e) => setTax(parseFloat(e.target.value) || 0)}
-                  className="flex-1 px-2 py-1 border border-gray-300 rounded"
+                  className="flex-1 px-2 py-1 border border-gray-300 rounded text-gray-900"
                 />
               </div>
 
@@ -361,7 +361,7 @@ export default function POSScreen() {
               <select
                 value={paymentMethod}
                 onChange={(e) => setPaymentMethod(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
               >
                 <option value="CASH">Cash</option>
                 <option value="CARD">Card</option>

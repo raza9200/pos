@@ -68,7 +68,7 @@ export default function ReportsDashboard() {
               onChange={(e) =>
                 setDateRange({ ...dateRange, startDate: e.target.value })
               }
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
             />
           </div>
           <div className="flex-1 min-w-[200px]">
@@ -81,7 +81,7 @@ export default function ReportsDashboard() {
               onChange={(e) =>
                 setDateRange({ ...dateRange, endDate: e.target.value })
               }
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
             />
           </div>
           <button

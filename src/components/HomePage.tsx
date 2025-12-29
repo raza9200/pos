@@ -13,7 +13,7 @@ export default function HomePage() {
               <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-violet-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-xl">P</span>
               </div>
-              <h1 className="text-2xl font-bold text-gray-900">POS System</h1>
+              <h1 className="text-2xl font-bold text-gray-900">Restaurant Manager</h1>
             </div>
             <div className="flex items-center gap-4">
               <Link
@@ -42,12 +42,12 @@ export default function HomePage() {
             </span>
           </div>
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            Streamline Your Retail
-            <span className="bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent"> Business</span>
+            Manage Your Restaurant
+            <span className="bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent"> Efficiently</span>
           </h2>
           <p className="text-xl text-gray-600 mb-10 leading-relaxed">
-            Complete point of sale system with inventory management, sales tracking, 
-            customer management, and powerful analytics. Built for modern retailers.
+            Complete restaurant management system with table management, kitchen display, 
+            order tracking, and powerful analytics. Built for modern restaurants.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

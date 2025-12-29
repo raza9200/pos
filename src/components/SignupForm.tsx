@@ -61,7 +61,7 @@ export default function SignupForm() {
         setError("Account created but login failed. Please login manually.")
         setIsLoading(false)
       } else {
-        router.push("/pos")
+        router.push("/dashboard")
         router.refresh()
       }
     } catch (err) {
@@ -120,7 +120,7 @@ export default function SignupForm() {
                 type="text"
                 required
                 placeholder="John Doe"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900"
               />
             </div>
 
@@ -134,7 +134,7 @@ export default function SignupForm() {
                 type="email"
                 required
                 placeholder="you@example.com"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900"
               />
             </div>
 
@@ -149,7 +149,7 @@ export default function SignupForm() {
                 required
                 placeholder="••••••••"
                 minLength={6}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900"
               />
               <p className="mt-1 text-xs text-gray-500">Minimum 6 characters</p>
             </div>
@@ -165,7 +165,7 @@ export default function SignupForm() {
                 required
                 placeholder="••••••••"
                 minLength={6}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900"
               />
             </div>
 

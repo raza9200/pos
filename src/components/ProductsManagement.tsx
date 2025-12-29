@@ -161,12 +161,12 @@ export default function ProductsManagement() {
           <tbody className="bg-white divide-y divide-gray-200">
             {products.map((product) => (
               <tr key={product.id}>
-                <td className="px-6 py-4 whitespace-nowrap">{product.name}</td>
-                <td className="px-6 py-4 whitespace-nowrap">{product.sku}</td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="px-6 py-4 whitespace-nowrap text-gray-900">{product.name}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-gray-900">{product.sku}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-gray-900">
                   {product.category.name}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="px-6 py-4 whitespace-nowrap text-gray-900">
                   ${Number(product.price).toFixed(2)}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
@@ -218,7 +218,7 @@ export default function ProductsManagement() {
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
                     }
-                    className="w-full px-3 py-2 border rounded-md"
+                    className="w-full px-3 py-2 border rounded-md text-gray-900"
                   />
                 </div>
                 <div>
@@ -230,7 +230,7 @@ export default function ProductsManagement() {
                     onChange={(e) =>
                       setFormData({ ...formData, sku: e.target.value })
                     }
-                    className="w-full px-3 py-2 border rounded-md"
+                    className="w-full px-3 py-2 border rounded-md text-gray-900"
                   />
                 </div>
                 <div>
@@ -243,7 +243,7 @@ export default function ProductsManagement() {
                     onChange={(e) =>
                       setFormData({ ...formData, barcode: e.target.value })
                     }
-                    className="w-full px-3 py-2 border rounded-md"
+                    className="w-full px-3 py-2 border rounded-md text-gray-900"
                   />
                 </div>
                 <div>
@@ -256,7 +256,7 @@ export default function ProductsManagement() {
                     onChange={(e) =>
                       setFormData({ ...formData, categoryId: e.target.value })
                     }
-                    className="w-full px-3 py-2 border rounded-md"
+                    className="w-full px-3 py-2 border rounded-md text-gray-900"
                   >
                     <option value="">Select Category</option>
                     {categories.map((cat) => (
@@ -278,7 +278,7 @@ export default function ProductsManagement() {
                     onChange={(e) =>
                       setFormData({ ...formData, price: e.target.value })
                     }
-                    className="w-full px-3 py-2 border rounded-md"
+                    className="w-full px-3 py-2 border rounded-md text-gray-900"
                   />
                 </div>
                 <div>
@@ -293,7 +293,7 @@ export default function ProductsManagement() {
                     onChange={(e) =>
                       setFormData({ ...formData, costPrice: e.target.value })
                     }
-                    className="w-full px-3 py-2 border rounded-md"
+                    className="w-full px-3 py-2 border rounded-md text-gray-900"
                   />
                 </div>
                 <div>
@@ -307,7 +307,7 @@ export default function ProductsManagement() {
                     onChange={(e) =>
                       setFormData({ ...formData, stock: e.target.value })
                     }
-                    className="w-full px-3 py-2 border rounded-md"
+                    className="w-full px-3 py-2 border rounded-md text-gray-900"
                   />
                 </div>
                 <div>
@@ -321,7 +321,7 @@ export default function ProductsManagement() {
                     onChange={(e) =>
                       setFormData({ ...formData, minStock: e.target.value })
                     }
-                    className="w-full px-3 py-2 border rounded-md"
+                    className="w-full px-3 py-2 border rounded-md text-gray-900"
                   />
                 </div>
               </div>

@@ -71,7 +71,7 @@ export default function SignupForm() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-violet-50 py-12">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 via-white to-red-50 py-12">
       {/* Back to Home */}
       <Link
         href="/"
@@ -88,8 +88,10 @@ export default function SignupForm() {
         <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
           {/* Logo */}
           <div className="flex justify-center mb-6">
-            <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-violet-600 rounded-2xl flex items-center justify-center">
-              <span className="text-white font-bold text-2xl">P</span>
+            <div className="w-16 h-16 bg-gradient-to-br from-orange-600 to-red-600 rounded-2xl flex items-center justify-center shadow-lg">
+              <svg className="w-9 h-9 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+              </svg>
             </div>
           </div>
 
@@ -172,7 +174,7 @@ export default function SignupForm() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-3 px-4 bg-gradient-to-r from-blue-600 to-violet-600 text-white rounded-lg hover:shadow-lg transition-all font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full py-3 px-4 bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-lg hover:shadow-lg transition-all font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? (
                 <span className="flex items-center justify-center gap-2">
@@ -191,7 +193,7 @@ export default function SignupForm() {
           {/* Sign In Link */}
           <p className="mt-6 text-center text-sm text-gray-600">
             Already have an account?{" "}
-            <Link href="/login" className="text-blue-600 hover:text-blue-700 font-semibold">
+            <Link href="/login" className="text-orange-600 hover:text-orange-700 font-semibold">
               Sign in
             </Link>
           </p>
@@ -200,16 +202,16 @@ export default function SignupForm() {
         {/* Features */}
         <div className="mt-8 grid grid-cols-3 gap-4 text-center">
           <div>
-            <div className="text-blue-600 mb-1">✓</div>
-            <p className="text-xs text-gray-600">Inventory Management</p>
+            <div className="text-orange-600 mb-1">✓</div>
+            <p className="text-xs text-gray-600">Table Management</p>
           </div>
           <div>
-            <div className="text-blue-600 mb-1">✓</div>
-            <p className="text-xs text-gray-600">Sales Analytics</p>
+            <div className="text-orange-600 mb-1">✓</div>
+            <p className="text-xs text-gray-600">Kitchen Display</p>
           </div>
           <div>
-            <div className="text-blue-600 mb-1">✓</div>
-            <p className="text-xs text-gray-600">Customer Tracking</p>
+            <div className="text-orange-600 mb-1">✓</div>
+            <p className="text-xs text-gray-600">Order Tracking</p>
           </div>
         </div>
       </div>

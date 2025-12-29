@@ -1,8 +1,13 @@
-import { requireAuth } from "@/lib/auth-utils"
+import { auth } from "@/auth"
+import { redirect } from "next/navigation"
 import OrdersManagement from "@/components/OrdersManagement"
 
 export default async function OrdersPage() {
-  await requireAuth() // All authenticated users can access
+  const session = await auth()
+  
+  if (!session?.user) {
+    redirect("/login")
+  }
 
-  return <OrdersManagement />
+  return <OrdersManagement userRole={session.user.role} />
 }

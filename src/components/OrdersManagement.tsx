@@ -38,7 +38,11 @@ type Category = {
   name: string
 }
 
-export default function OrdersManagement() {
+interface OrdersManagementProps {
+  userRole?: string
+}
+
+export default function OrdersManagement({ userRole }: OrdersManagementProps) {
   const [orders, setOrders] = useState<Order[]>([])
   const [products, setProducts] = useState<Product[]>([])
   const [categories, setCategories] = useState<Category[]>([])
@@ -263,7 +267,8 @@ export default function OrdersManagement() {
 
             {/* Status Update Buttons */}
             <div className="flex gap-2 flex-wrap">
-              {order.status === "PENDING" && (
+              {/* Only CHEF/ADMIN/MANAGER can start preparing */}
+              {order.status === "PENDING" && ["ADMIN", "MANAGER", "CHEF"].includes(userRole || "") && (
                 <button
                   onClick={() => updateOrderStatus(order.id, "PREPARING")}
                   className="px-3 py-1 bg-blue-600 text-white rounded text-xs hover:bg-blue-700"
@@ -271,7 +276,8 @@ export default function OrdersManagement() {
                   Start Preparing
                 </button>
               )}
-              {order.status === "PREPARING" && (
+              {/* Only CHEF/ADMIN/MANAGER can mark as ready */}
+              {order.status === "PREPARING" && ["ADMIN", "MANAGER", "CHEF"].includes(userRole || "") && (
                 <button
                   onClick={() => updateOrderStatus(order.id, "READY")}
                   className="px-3 py-1 bg-green-600 text-white rounded text-xs hover:bg-green-700"
@@ -279,6 +285,7 @@ export default function OrdersManagement() {
                   Mark Ready
                 </button>
               )}
+              {/* WAITER can mark READY orders as SERVED */}
               {order.status === "READY" && (
                 <button
                   onClick={() => updateOrderStatus(order.id, "SERVED")}
@@ -287,7 +294,8 @@ export default function OrdersManagement() {
                   Mark Served
                 </button>
               )}
-              {order.status === "SERVED" && (
+              {/* Only ADMIN/MANAGER/CASHIER can complete (for billing) */}
+              {order.status === "SERVED" && ["ADMIN", "MANAGER", "CASHIER"].includes(userRole || "") && (
                 <button
                   onClick={() => updateOrderStatus(order.id, "COMPLETED")}
                   className="px-3 py-1 bg-gray-600 text-white rounded text-xs hover:bg-gray-700"

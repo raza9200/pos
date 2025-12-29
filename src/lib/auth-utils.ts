@@ -1,7 +1,7 @@
 import { auth } from "@/auth"
 import { redirect } from "next/navigation"
 
-export type UserRole = "ADMIN" | "MANAGER" | "CASHIER"
+export type UserRole = "ADMIN" | "MANAGER" | "CASHIER" | "WAITER" | "CHEF"
 
 export async function requireAuth(allowedRoles?: UserRole[]) {
   const session = await auth()

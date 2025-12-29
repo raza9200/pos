@@ -43,7 +43,7 @@ export async function POST(request: Request) {
         email,
         password: hashedPassword,
         role: "CASHIER",
-        active: true,
+        isActive: true,
       },
     })
 

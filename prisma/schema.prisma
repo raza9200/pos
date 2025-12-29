@@ -1,0 +1,172 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// ==================== USER MANAGEMENT ====================
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("CASHIER")
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  sales     Sale[]
+  expenses  Expense[]
+
+  @@index([email])
+  @@map("users")
+}
+
+// ==================== PRODUCT MANAGEMENT ====================
+
+model Category {
+  id          String    @id @default(cuid())
+  name        String    @unique
+  description String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  products Product[]
+
+  @@map("categories")
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  sku         String   @unique
+  barcode     String?  @unique
+  price       Float
+  costPrice   Float
+  stock       Int      @default(0)
+  minStock    Int      @default(10)
+  imageUrl    String?
+  categoryId  String
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  category  Category    @relation(fields: [categoryId], references: [id])
+  saleItems SaleItem[]
+
+  @@index([sku])
+  @@index([barcode])
+  @@index([categoryId])
+  @@index([name])
+  @@map("products")
+}
+
+// ==================== CUSTOMER MANAGEMENT ====================
+
+model Customer {
+  id          String   @id @default(cuid())
+  name        String
+  email       String?  @unique
+  phone       String?
+  address     String?
+  loyaltyPoints Int    @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  sales Sale[]
+
+  @@index([email])
+  @@index([phone])
+  @@map("customers")
+}
+
+// ==================== SUPPLIER MANAGEMENT ====================
+
+model Supplier {
+  id          String   @id @default(cuid())
+  name        String
+  email       String?  @unique
+  phone       String?
+  address     String?
+  contactPerson String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([email])
+  @@map("suppliers")
+}
+
+// ==================== SALES MANAGEMENT ====================
+
+model Sale {
+  id            String   @id @default(cuid())
+  invoiceNumber String   @unique
+  customerId    String?
+  userId        String
+  subtotal      Float
+  discount      Float    @default(0)
+  tax           Float    @default(0)
+  total         Float
+  paymentMethod String
+  status        String   @default("COMPLETED")
+  notes         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  customer  Customer?  @relation(fields: [customerId], references: [id])
+  user      User       @relation(fields: [userId], references: [id])
+  saleItems SaleItem[]
+
+  @@index([invoiceNumber])
+  @@index([customerId])
+  @@index([userId])
+  @@index([createdAt])
+  @@map("sales")
+}
+
+model SaleItem {
+  id         String  @id @default(cuid())
+  saleId     String
+  productId  String
+  quantity   Int
+  unitPrice  Float
+  discount   Float   @default(0)
+  total      Float
+  createdAt  DateTime @default(now())
+
+  sale    Sale    @relation(fields: [saleId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id])
+
+  @@index([saleId])
+  @@index([productId])
+  @@map("sale_items")
+}
+
+// ==================== EXPENSE MANAGEMENT ====================
+
+model Expense {
+  id          String   @id @default(cuid())
+  description String
+  amount      Float
+  category    String
+  userId      String
+  notes       String?
+  expenseDate DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([expenseDate])
+  @@index([category])
+  @@map("expenses")
+}

@@ -132,76 +132,104 @@ export default function ReportsDashboard() {
         </div>
 
         <div className="p-6">
-          {/* Sales Report */}
-          {activeTab === "sales" && salesReport && (
-            <div className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg p-6 text-white">
-                  <p className="text-sm opacity-90 mb-2">Total Sales</p>
-                  <p className="text-3xl font-bold">${Number(salesReport.summary.totalSales).toFixed(2)}</p>
-                </div>
-                <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-lg p-6 text-white">
-                  <p className="text-sm opacity-90 mb-2">Transactions</p>
-                  <p className="text-3xl font-bold">{salesReport.summary.totalTransactions}</p>
-                </div>
-                <div className="bg-gradient-to-r from-violet-500 to-violet-600 rounded-lg p-6 text-white">
-                  <p className="text-sm opacity-90 mb-2">Avg Transaction</p>
-                  <p className="text-3xl font-bold">${Number(salesReport.summary.averageTransaction).toFixed(2)}</p>
-                </div>
-                <div className="bg-gradient-to-r from-amber-500 to-amber-600 rounded-lg p-6 text-white">
-                  <p className="text-sm opacity-90 mb-2">Total Discount</p>
-                  <p className="text-3xl font-bold">${Number(salesReport.summary.totalDiscount).toFixed(2)}</p>
-                </div>
-              </div>
-
-              <div className="bg-gray-50 rounded-lg p-6">
-                <h3 className="text-lg font-semibold mb-4">Top Selling Products</h3>
-                <div className="space-y-3">
-                  {salesReport.topProducts.map((item: any, index: number) => (
-                    <div key={index} className="flex items-center justify-between bg-white p-4 rounded-lg">
-                      <div className="flex items-center gap-3">
-                        <span className="flex items-center justify-center w-8 h-8 bg-blue-100 text-blue-600 rounded-full font-bold text-sm">
-                          {index + 1}
-                        </span>
-                        <div>
-                          <p className="font-medium">{item.product?.name}</p>
-                          <p className="text-sm text-gray-500">SKU: {item.product?.sku}</p>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <p className="font-bold text-emerald-600">{item.quantitySold} sold</p>
-                        <p className="text-sm text-gray-500">${Number(item.revenue).toFixed(2)}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+          {/* Loading State */}
+          {loading && (
+            <div className="flex items-center justify-center py-12">
+              <div className="text-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600 mx-auto mb-4"></div>
+                <p className="text-gray-600">Loading reports...</p>
               </div>
             </div>
           )}
 
-          {/* Inventory Report */}
-          {activeTab === "inventory" && inventoryReport && (
+          {/* Sales Report */}
+          {!loading && activeTab === "sales" && (
             <div className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div className="bg-gradient-to-r from-indigo-500 to-indigo-600 rounded-lg p-6 text-white">
-                  <p className="text-sm opacity-90 mb-2">Total Products</p>
-                  <p className="text-3xl font-bold">{inventoryReport.summary.totalProducts}</p>
+              {salesReport ? (
+                <>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg p-6 text-white">
+                      <p className="text-sm opacity-90 mb-2">Total Sales</p>
+                      <p className="text-3xl font-bold">Rs {Number(salesReport.summary?.totalSales || 0).toFixed(2)}</p>
+                    </div>
+                    <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-lg p-6 text-white">
+                      <p className="text-sm opacity-90 mb-2">Transactions</p>
+                      <p className="text-3xl font-bold">{salesReport.summary?.totalTransactions || 0}</p>
+                    </div>
+                    <div className="bg-gradient-to-r from-violet-500 to-violet-600 rounded-lg p-6 text-white">
+                      <p className="text-sm opacity-90 mb-2">Avg Transaction</p>
+                      <p className="text-3xl font-bold">Rs {Number(salesReport.summary?.averageTransaction || 0).toFixed(2)}</p>
+                    </div>
+                    <div className="bg-gradient-to-r from-amber-500 to-amber-600 rounded-lg p-6 text-white">
+                      <p className="text-sm opacity-90 mb-2">Total Discount</p>
+                      <p className="text-3xl font-bold">Rs {Number(salesReport.summary?.totalDiscount || 0).toFixed(2)}</p>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <div className="text-center py-12 bg-gray-50 rounded-lg">
+                  <p className="text-gray-600">No sales data available</p>
                 </div>
-                <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-lg p-6 text-white">
-                  <p className="text-sm opacity-90 mb-2">Stock Value</p>
-                  <p className="text-3xl font-bold">${Number(inventoryReport.summary.totalStockValue).toFixed(2)}</p>
-                </div>
-                <div className="bg-gradient-to-r from-amber-500 to-amber-600 rounded-lg p-6 text-white">
-                  <p className="text-sm opacity-90 mb-2">Low Stock Items</p>
-                  <p className="text-3xl font-bold">{inventoryReport.summary.lowStockCount}</p>
-                </div>
-                <div className="bg-gradient-to-r from-red-500 to-red-600 rounded-lg p-6 text-white">
-                  <p className="text-sm opacity-90 mb-2">Out of Stock</p>
-                  <p className="text-3xl font-bold">{inventoryReport.summary.outOfStockCount}</p>
-                </div>
-              </div>
+              )}
 
-              {inventoryReport.lowStockProducts.length > 0 && (
+              {salesReport && salesReport.topProducts && salesReport.topProducts.length > 0 && (
+                <div className="bg-gray-50 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold mb-4">Top Selling Products</h3>
+                  <div className="space-y-3">
+                    {salesReport.topProducts.map((item: any, index: number) => (
+                      <div key={index} className="flex items-center justify-between bg-white p-4 rounded-lg">
+                        <div className="flex items-center gap-3">
+                          <span className="flex items-center justify-center w-8 h-8 bg-orange-100 text-orange-600 rounded-full font-bold text-sm">
+                            {index + 1}
+                          </span>
+                          <div>
+                            <p className="font-medium">{item.product?.name}</p>
+                            <p className="text-sm text-gray-500">SKU: {item.product?.sku}</p>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <p className="font-bold text-emerald-600">{item.quantitySold} sold</p>
+                          <p className="text-sm text-gray-500">Rs {Number(item.revenue).toFixed(2)}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Inventory Report */}
+          {!loading && activeTab === "inventory" && (
+            <div className="space-y-6">
+              {inventoryReport ? (
+                <>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div className="bg-gradient-to-r from-indigo-500 to-indigo-600 rounded-lg p-6 text-white">
+                      <p className="text-sm opacity-90 mb-2">Total Products</p>
+                      <p className="text-3xl font-bold">{inventoryReport.summary?.totalProducts || 0}</p>
+                    </div>
+                    <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-lg p-6 text-white">
+                      <p className="text-sm opacity-90 mb-2">Stock Value</p>
+                      <p className="text-3xl font-bold">Rs {Number(inventoryReport.summary?.totalStockValue || 0).toFixed(2)}</p>
+                    </div>
+                    <div className="bg-gradient-to-r from-amber-500 to-amber-600 rounded-lg p-6 text-white">
+                      <p className="text-sm opacity-90 mb-2">Low Stock Items</p>
+                      <p className="text-3xl font-bold">{inventoryReport.summary?.lowStockCount || 0}</p>
+                    </div>
+                    <div className="bg-gradient-to-r from-red-500 to-red-600 rounded-lg p-6 text-white">
+                      <p className="text-sm opacity-90 mb-2">Out of Stock</p>
+                      <p className="text-3xl font-bold">{inventoryReport.summary?.outOfStockCount || 0}</p>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <div className="text-center py-12 bg-gray-50 rounded-lg">
+                  <p className="text-gray-600">No inventory data available</p>
+                </div>
+              )}
+
+              {inventoryReport && inventoryReport.lowStockProducts && inventoryReport.lowStockProducts.length > 0 && (
                 <div className="bg-amber-50 rounded-lg p-6 border border-amber-200">
                   <h3 className="text-lg font-semibold mb-4 text-amber-900">⚠️ Low Stock Alert</h3>
                   <div className="space-y-2">
@@ -223,48 +251,58 @@ export default function ReportsDashboard() {
           )}
 
           {/* Profit Report */}
-          {activeTab === "profit" && profitReport && (
+          {!loading && activeTab === "profit" && (
             <div className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-lg p-6 text-white">
-                  <p className="text-sm opacity-90 mb-2">Gross Profit</p>
-                  <p className="text-3xl font-bold">${Number(profitReport.summary.grossProfit).toFixed(2)}</p>
-                  <p className="text-sm opacity-80 mt-1">
-                    {profitReport.summary.grossProfitMargin.toFixed(2)}% margin
-                  </p>
-                </div>
-                <div className="bg-gradient-to-r from-red-500 to-red-600 rounded-lg p-6 text-white">
-                  <p className="text-sm opacity-90 mb-2">Total Expenses</p>
-                  <p className="text-3xl font-bold">${Number(profitReport.summary.totalExpenses).toFixed(2)}</p>
-                </div>
-                <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg p-6 text-white">
-                  <p className="text-sm opacity-90 mb-2">Net Profit</p>
-                  <p className="text-3xl font-bold">${Number(profitReport.summary.netProfit).toFixed(2)}</p>
-                  <p className="text-sm opacity-80 mt-1">
-                    {profitReport.summary.netProfitMargin.toFixed(2)}% margin
-                  </p>
-                </div>
-              </div>
-
-              <div className="bg-gray-50 rounded-lg p-6">
-                <h3 className="text-lg font-semibold mb-4">Top Profitable Products</h3>
-                <div className="space-y-3">
-                  {profitReport.topProfitableProducts.map((item: any, index: number) => (
-                    <div key={index} className="flex items-center justify-between bg-white p-4 rounded-lg">
-                      <div className="flex items-center gap-3">
-                        <span className="flex items-center justify-center w-8 h-8 bg-emerald-100 text-emerald-600 rounded-full font-bold text-sm">
-                          {index + 1}
-                        </span>
-                        <p className="font-medium">{item.productName}</p>
-                      </div>
-                      <div className="text-right">
-                        <p className="font-bold text-emerald-600">${Number(item.profit).toFixed(2)}</p>
-                        <p className="text-sm text-gray-500">{item.quantitySold} sold</p>
-                      </div>
+              {profitReport ? (
+                <>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-lg p-6 text-white">
+                      <p className="text-sm opacity-90 mb-2">Gross Profit</p>
+                      <p className="text-3xl font-bold">Rs {Number(profitReport.summary?.grossProfit || 0).toFixed(2)}</p>
+                      <p className="text-sm opacity-80 mt-1">
+                        {(profitReport.summary?.grossProfitMargin || 0).toFixed(2)}% margin
+                      </p>
                     </div>
-                  ))}
+                    <div className="bg-gradient-to-r from-red-500 to-red-600 rounded-lg p-6 text-white">
+                      <p className="text-sm opacity-90 mb-2">Total Expenses</p>
+                      <p className="text-3xl font-bold">Rs {Number(profitReport.summary?.totalExpenses || 0).toFixed(2)}</p>
+                    </div>
+                    <div className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg p-6 text-white">
+                      <p className="text-sm opacity-90 mb-2">Net Profit</p>
+                      <p className="text-3xl font-bold">Rs {Number(profitReport.summary?.netProfit || 0).toFixed(2)}</p>
+                      <p className="text-sm opacity-80 mt-1">
+                        {(profitReport.summary?.netProfitMargin || 0).toFixed(2)}% margin
+                      </p>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <div className="text-center py-12 bg-gray-50 rounded-lg">
+                  <p className="text-gray-600">No profit data available</p>
                 </div>
-              </div>
+              )}
+
+              {profitReport && profitReport.topProfitableProducts && profitReport.topProfitableProducts.length > 0 && (
+                <div className="bg-gray-50 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold mb-4">Top Profitable Products</h3>
+                  <div className="space-y-3">
+                    {profitReport.topProfitableProducts.map((item: any, index: number) => (
+                      <div key={index} className="flex items-center justify-between bg-white p-4 rounded-lg">
+                        <div className="flex items-center gap-3">
+                          <span className="flex items-center justify-center w-8 h-8 bg-emerald-100 text-emerald-600 rounded-full font-bold text-sm">
+                            {index + 1}
+                          </span>
+                          <p className="font-medium">{item.productName}</p>
+                        </div>
+                        <div className="text-right">
+                          <p className="font-bold text-emerald-600">Rs {Number(item.profit).toFixed(2)}</p>
+                          <p className="text-sm text-gray-500">{item.quantitySold} sold</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </div>

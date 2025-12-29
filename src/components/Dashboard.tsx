@@ -55,7 +55,7 @@ export default function Dashboard() {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-blue-100 text-sm font-medium">Today's Sales</p>
-              <p className="text-3xl font-bold mt-2">₹{stats.todaySales.toFixed(2)}</p>
+              <p className="text-3xl font-bold mt-2">Rs {stats.todaySales.toFixed(2)}</p>
             </div>
             <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -124,7 +124,7 @@ export default function Dashboard() {
                     <p className="text-sm text-gray-500">{item.quantity} sold</p>
                   </div>
                 </div>
-                <span className="font-bold text-emerald-600">₹{item.revenue}</span>
+                <span className="font-bold text-emerald-600">Rs {item.revenue}</span>
               </div>
             ))}
           </div>
@@ -141,7 +141,7 @@ export default function Dashboard() {
                     <span className="font-bold text-gray-900">{order.id}</span>
                     <span className="text-sm text-gray-500">• Table {order.table}</span>
                   </div>
-                  <p className="text-sm text-gray-600">{order.items} items • ₹{order.total}</p>
+                  <p className="text-sm text-gray-600">{order.items} items • Rs {order.total}</p>
                 </div>
                 <div className="text-right">
                   <span className={`px-3 py-1 rounded-full text-xs font-medium ${

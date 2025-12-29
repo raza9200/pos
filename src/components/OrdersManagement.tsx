@@ -249,7 +249,7 @@ export default function OrdersManagement() {
               {order.items.map((item) => (
                 <div key={item.id} className="flex justify-between text-sm">
                   <span className="text-gray-700">{item.quantity}x {item.productName}</span>
-                  <span className="text-gray-900 font-medium">₹{item.total.toFixed(2)}</span>
+                  <span className="text-gray-900 font-medium">Rs {item.total.toFixed(2)}</span>
                 </div>
               ))}
             </div>
@@ -257,7 +257,7 @@ export default function OrdersManagement() {
             <div className="border-t pt-3 mb-4">
               <div className="flex justify-between font-bold text-gray-900">
                 <span>Total</span>
-                <span className="text-orange-600">₹{order.total.toFixed(2)}</span>
+                <span className="text-orange-600">Rs {order.total.toFixed(2)}</span>
               </div>
             </div>
 
@@ -345,7 +345,7 @@ export default function OrdersManagement() {
                         disabled={product.stock <= 0}
                       >
                         <h4 className="font-semibold text-gray-900 mb-1">{product.name}</h4>
-                        <p className="text-orange-600 font-bold">₹{product.price.toFixed(2)}</p>
+                        <p className="text-orange-600 font-bold">Rs {product.price.toFixed(2)}</p>
                         <p className="text-xs text-gray-500">Stock: {product.stock}</p>
                       </button>
                     ))}
@@ -409,7 +409,7 @@ export default function OrdersManagement() {
                               >
                                 +
                               </button>
-                              <span className="ml-auto text-gray-900 font-semibold">₹{item.total.toFixed(2)}</span>
+                              <span className="ml-auto text-gray-900 font-semibold">Rs {item.total.toFixed(2)}</span>
                             </div>
                           </div>
                         ))}
@@ -431,15 +431,15 @@ export default function OrdersManagement() {
                   <div className="border-t pt-4 space-y-2">
                     <div className="flex justify-between text-gray-700">
                       <span>Subtotal</span>
-                      <span className="font-medium">₹{calculateSubtotal().toFixed(2)}</span>
+                      <span className="font-medium">Rs {calculateSubtotal().toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between text-gray-700">
                       <span>Tax (5%)</span>
-                      <span className="font-medium">₹{calculateTax().toFixed(2)}</span>
+                      <span className="font-medium">Rs {calculateTax().toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between text-lg font-bold text-gray-900 border-t pt-2">
                       <span>Total</span>
-                      <span className="text-orange-600">₹{calculateTotal().toFixed(2)}</span>
+                      <span className="text-orange-600">Rs {calculateTotal().toFixed(2)}</span>
                     </div>
                   </div>
 

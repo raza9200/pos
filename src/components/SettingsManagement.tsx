@@ -6,9 +6,9 @@ export default function SettingsManagement() {
   const [settings, setSettings] = useState({
     restaurantName: "RestaurantPro",
     email: "admin@restaurant.com",
-    phone: "+91 1234567890",
-    address: "123 Food Street, City, State",
-    currency: "INR",
+    phone: "+92 300 1234567",
+    address: "123 Food Street, Karachi, Pakistan",
+    currency: "PKR",
     taxRate: 5,
     serviceCharge: 0,
     receiptFooter: "Thank you for dining with us!",
@@ -82,7 +82,7 @@ export default function SettingsManagement() {
                 onChange={(e) => setSettings({ ...settings, currency: e.target.value })}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 text-gray-900"
               >
-                <option value="INR">₹ INR - Indian Rupee</option>
+                <option value="PKR">Rs PKR - Pakistani Rupee</option>
                 <option value="USD">$ USD - US Dollar</option>
                 <option value="EUR">€ EUR - Euro</option>
                 <option value="GBP">£ GBP - British Pound</option>

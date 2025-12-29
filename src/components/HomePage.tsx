@@ -100,27 +100,27 @@ export default function HomePage() {
                         <p className="font-medium text-gray-900">Chicken Biryani</p>
                         <p className="text-sm text-gray-500">x2</p>
                       </div>
-                      <span className="font-bold text-gray-900">₹600</span>
+                      <span className="font-bold text-gray-900">Rs 600</span>
                     </div>
                     <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
                       <div>
                         <p className="font-medium text-gray-900">Butter Naan</p>
                         <p className="text-sm text-gray-500">x4</p>
                       </div>
-                      <span className="font-bold text-gray-900">₹120</span>
+                      <span className="font-bold text-gray-900">Rs 120</span>
                     </div>
                     <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
                       <div>
                         <p className="font-medium text-gray-900">Mango Lassi</p>
                         <p className="text-sm text-gray-500">x2</p>
                       </div>
-                      <span className="font-bold text-gray-900">₹80</span>
+                      <span className="font-bold text-gray-900">Rs 80</span>
                     </div>
                   </div>
                   <div className="mt-4 pt-4 border-t border-gray-200">
                     <div className="flex justify-between items-center">
                       <span className="text-lg font-bold text-gray-900">Total</span>
-                      <span className="text-2xl font-bold text-orange-600">₹800</span>
+                      <span className="text-2xl font-bold text-orange-600">Rs 800</span>
                     </div>
                   </div>
                 </div>

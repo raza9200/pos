@@ -191,7 +191,7 @@ export default function MenuManagement() {
               )}
               
               <div className="flex justify-between items-center mb-3">
-                <span className="text-2xl font-bold text-orange-600">₹{item.price.toFixed(2)}</span>
+                <span className="text-2xl font-bold text-orange-600">Rs {item.price.toFixed(2)}</span>
                 <span className="text-sm text-gray-600">Stock: {item.stock}</span>
               </div>
               
@@ -282,7 +282,7 @@ export default function MenuManagement() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Price (₹)</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Price (Rs )</label>
                   <input
                     type="number"
                     value={itemForm.price}

@@ -25,7 +25,7 @@ export async function POST(request: Request) {
     }
 
     // Build payment notes
-    const paymentNotes = `Received: ₹${receivedAmount.toFixed(2)}${change > 0 ? ` | Change: ₹${change.toFixed(2)}` : ""}`
+    const paymentNotes = `Received: Rs ${receivedAmount.toFixed(2)}${change > 0 ? ` | Change: Rs ${change.toFixed(2)}` : ""}`
     const updatedNotes = existingSale.notes 
       ? `${existingSale.notes}\n${paymentNotes}` 
       : paymentNotes

@@ -159,7 +159,7 @@ export default function BillingManagement() {
                         {order.status}
                       </span>
                     </div>
-                    <p className="text-lg font-bold text-orange-600">₹{order.total.toFixed(2)}</p>
+                    <p className="text-lg font-bold text-orange-600">Rs {order.total.toFixed(2)}</p>
                   </button>
                 ))}
               </div>
@@ -207,9 +207,9 @@ export default function BillingManagement() {
                       <div key={item.id} className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
                         <div>
                           <p className="font-medium text-gray-900">{item.productName}</p>
-                          <p className="text-sm text-gray-600">₹{item.unitPrice.toFixed(2)} × {item.quantity}</p>
+                          <p className="text-sm text-gray-600">Rs {item.unitPrice.toFixed(2)} × {item.quantity}</p>
                         </div>
-                        <p className="font-bold text-gray-900">₹{item.total.toFixed(2)}</p>
+                        <p className="font-bold text-gray-900">Rs {item.total.toFixed(2)}</p>
                       </div>
                     ))}
                   </div>
@@ -238,7 +238,7 @@ export default function BillingManagement() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Discount (₹)</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Discount (Rs )</label>
                       <input
                         type="number"
                         value={discount}
@@ -251,7 +251,7 @@ export default function BillingManagement() {
 
                     {paymentMethod === "CASH" && (
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Received Amount (₹)</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Received Amount (Rs )</label>
                         <input
                           type="number"
                           value={receivedAmount}
@@ -270,31 +270,31 @@ export default function BillingManagement() {
                   <div className="space-y-3">
                     <div className="flex justify-between text-gray-700">
                       <span>Subtotal</span>
-                      <span className="font-medium">₹{selectedOrder.subtotal.toFixed(2)}</span>
+                      <span className="font-medium">Rs {selectedOrder.subtotal.toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between text-gray-700">
                       <span>Tax</span>
-                      <span className="font-medium">₹{selectedOrder.tax.toFixed(2)}</span>
+                      <span className="font-medium">Rs {selectedOrder.tax.toFixed(2)}</span>
                     </div>
                     {discount > 0 && (
                       <div className="flex justify-between text-green-700">
                         <span>Discount</span>
-                        <span className="font-medium">-₹{discount.toFixed(2)}</span>
+                        <span className="font-medium">-Rs {discount.toFixed(2)}</span>
                       </div>
                     )}
                     <div className="flex justify-between text-2xl font-bold text-gray-900 border-t border-orange-200 pt-3">
                       <span>Total</span>
-                      <span className="text-orange-600">₹{calculateFinalTotal().toFixed(2)}</span>
+                      <span className="text-orange-600">Rs {calculateFinalTotal().toFixed(2)}</span>
                     </div>
                     {paymentMethod === "CASH" && receivedAmount > 0 && (
                       <>
                         <div className="flex justify-between text-gray-700 pt-2">
                           <span>Received</span>
-                          <span className="font-medium">₹{receivedAmount.toFixed(2)}</span>
+                          <span className="font-medium">Rs {receivedAmount.toFixed(2)}</span>
                         </div>
                         <div className="flex justify-between text-lg font-bold text-emerald-700">
                           <span>Change</span>
-                          <span>₹{calculateChange().toFixed(2)}</span>
+                          <span>Rs {calculateChange().toFixed(2)}</span>
                         </div>
                       </>
                     )}
@@ -343,7 +343,7 @@ export default function BillingManagement() {
                 {completedBill.items.map(item => (
                   <div key={item.id} className="flex justify-between text-sm">
                     <span className="text-gray-700">{item.quantity}x {item.productName}</span>
-                    <span className="text-gray-900 font-medium">₹{item.total.toFixed(2)}</span>
+                    <span className="text-gray-900 font-medium">Rs {item.total.toFixed(2)}</span>
                   </div>
                 ))}
               </div>
@@ -351,21 +351,21 @@ export default function BillingManagement() {
               <div className="border-t pt-3 space-y-2">
                 <div className="flex justify-between text-sm text-gray-700">
                   <span>Subtotal</span>
-                  <span>₹{completedBill.subtotal.toFixed(2)}</span>
+                  <span>Rs {completedBill.subtotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between text-sm text-gray-700">
                   <span>Tax</span>
-                  <span>₹{completedBill.tax.toFixed(2)}</span>
+                  <span>Rs {completedBill.tax.toFixed(2)}</span>
                 </div>
                 {discount > 0 && (
                   <div className="flex justify-between text-sm text-green-700">
                     <span>Discount</span>
-                    <span>-₹{discount.toFixed(2)}</span>
+                    <span>-Rs {discount.toFixed(2)}</span>
                   </div>
                 )}
                 <div className="flex justify-between font-bold text-lg border-t pt-2">
                   <span>Total Paid</span>
-                  <span className="text-orange-600">₹{completedBill.total.toFixed(2)}</span>
+                  <span className="text-orange-600">Rs {completedBill.total.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between text-sm text-gray-700">
                   <span>Payment Method</span>

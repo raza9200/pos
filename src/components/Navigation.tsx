@@ -8,7 +8,7 @@ import { useState } from "react"
 interface NavItem {
   href: string
   label: string
-  icon: JSX.Element
+  icon: React.ReactElement
   roles: string[]
 }
 

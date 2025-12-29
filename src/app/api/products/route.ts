@@ -17,9 +17,9 @@ export async function GET(request: NextRequest) {
           search
             ? {
                 OR: [
-                  { name: { contains: search, mode: "insensitive" } },
-                  { sku: { contains: search, mode: "insensitive" } },
-                  { barcode: { contains: search, mode: "insensitive" } },
+                  { name: { contains: search } },
+                  { sku: { contains: search } },
+                  { barcode: { contains: search } },
                 ],
               }
             : {},

@@ -1,6 +1,8 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 type TableStatus = "AVAILABLE" | "OCCUPIED" | "RESERVED"
 
@@ -15,6 +17,7 @@ type Table = {
 }
 
 export default function TablesManagement() {
+  const router = useRouter()
   const [tables, setTables] = useState<Table[]>([
     { id: 1, number: 1, capacity: 2, status: "AVAILABLE" },
     { id: 2, number: 2, capacity: 4, status: "OCCUPIED", currentOrder: "INV-000001" },
@@ -57,6 +60,11 @@ export default function TablesManagement() {
     ))
     setShowModal(false)
     setSelectedTable(null)
+  }
+
+  const handleTakeOrder = (tableNumber: number) => {
+    // Redirect to orders page with table number
+    router.push(`/orders?table=${tableNumber}`)
   }
 
   const stats = {
@@ -230,6 +238,30 @@ export default function TablesManagement() {
                     </div>
                   </>
                 )}
+
+                <div className="pt-4 border-t">
+                  <p className="text-sm font-medium text-gray-700 mb-3">Actions</p>
+                  
+                  {/* Take Order Button - Always visible for waiters */}
+                  <button
+                    onClick={() => handleTakeOrder(selectedTable.number)}
+                    className="w-full mb-3 px-4 py-3 bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-lg hover:shadow-lg transition-all font-semibold flex items-center justify-center gap-2"
+                  >
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                    </svg>
+                    Take Order for Table {selectedTable.number}
+                  </button>
+
+                  {selectedTable.currentOrder && (
+                    <Link
+                      href={`/billing`}
+                      className="w-full mb-3 block text-center px-4 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-semibold"
+                    >
+                      Process Payment
+                    </Link>
+                  )}
+                </div>
 
                 <div className="pt-4 border-t">
                   <p className="text-sm font-medium text-gray-700 mb-3">Change Status</p>

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useSearchParams } from "next/navigation"
 
 type OrderItem = {
   id: string
@@ -43,6 +44,7 @@ interface OrdersManagementProps {
 }
 
 export default function OrdersManagement({ userRole }: OrdersManagementProps) {
+  const searchParams = useSearchParams()
   const [orders, setOrders] = useState<Order[]>([])
   const [products, setProducts] = useState<Product[]>([])
   const [categories, setCategories] = useState<Category[]>([])
@@ -60,7 +62,14 @@ export default function OrdersManagement({ userRole }: OrdersManagementProps) {
     fetchOrders()
     fetchProducts()
     fetchCategories()
-  }, [])
+    
+    // Check if table number is passed from tables page
+    const tableParam = searchParams.get('table')
+    if (tableParam) {
+      setTableNumber(tableParam)
+      setShowNewOrderModal(true)
+    }
+  }, [searchParams])
 
   const fetchOrders = async () => {
     try {
